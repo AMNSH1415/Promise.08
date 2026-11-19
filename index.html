@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Document</title>
+</head>
+<body>
+    <h1>Question no.01</h1>
+    <h3>Create a Promise for withdrawing money.
+
+Conditions:
+- Account balance = Rs. 10,000
+- Withdrawal amount = Rs. 7,000
+- If balance is sufficient, resolve the Promise.
+- Otherwise, reject the Promise.
+Use .then() and .catch() to display the result.</h3>
+    
+    <h1>Question no.02</h1>
+    <h3> Online Exam Result
+
+Create a Promise that checks student results.
+- Marks 50 or above: Pass.
+- Marks below 50: Fail.
+- Marks greater than 100 or less than 0: Invalid marks.
+Handle the result using .then() and .catch().</h3>
+
+    <h1>Question no.03</h1>
+    <h3>Product Delivery System
+
+Create a Promise for an online shopping delivery.
+
+Use setTimeout() to simulate a 3-second delivery process.
+- After 3 seconds, resolve with "Product Delivered Successfully".
+- If delivery is unsuccessful, reject with "Delivery Failed".
+Display the result using .then() and .catch().</h3>
+
+<h1>Question no.04</h1>
+    <h3>Promise Chaining
+
+Create a Promise that performs these operations:
+1. Start with a number: 10.
+2. Add 20.
+3. Multiply the result by 2.
+4. Subtract 5.
+5. Display the final result.
+Use Promise chaining with multiple .then() methods.</h3>
+
+
+    <script>
+        // QUESTION NO. 01
+
+    let balance = 10000;
+    let withdraw = 7000;
+
+    let withdrawal = new Promise(function(resolve, reject) {
+        if (balance >= withdraw) {
+            resolve("Withdrawal Successful");
+    }
+    else {
+        reject("Insufficient Balance");
+    }
+
+});
+
+    withdrawal
+    .then(function(result) {
+        console.log(result);
+    })
+    .catch(function(error) {
+        console.log(error);
+    });
+
+  
+    // QUESTION NO. 02
+
+    let marks = Number(prompt("Enter your marks"));
+
+    let exam = new Promise(function(resolve, reject) {
+        if (marks > 100 || marks < 0) {
+        reject("Invalid Marks");
+    }
+    else if (marks >= 50) {
+        resolve("Pass");
+    }
+    else {
+        resolve("Fail");
+    }
+
+});
+
+    exam.then(function(result) {
+        console.log(result);
+    });
+
+    exam.catch(function(error) {
+        console.log(error);
+    });
+
+// QUESTION NO. 03
+    let delivery = new Promise(function(resolve, reject) {
+        setTimeout(function() {
+
+        let status = true;
+        if (status == true) {
+            resolve("Product Delivered Successfully");
+        }
+        else {
+            reject("Delivery Failed");
+        }
+    }, 3000);
+});
+
+    delivery
+    .then(function(result) {
+        console.log(result);
+    })
+    .catch(function(error) {
+        console.log(error);
+    });
+
+// QUESTION NO. 04
+
+    let number = 10;
+    let calculation = Promise.resolve(number);
+
+    calculation
+    .then(function(result) {
+        console.log("After Addition:", result + 20);
+        return result + 20;
+    })
+    .then(function(result) {
+        console.log("After Multiplication:", result * 2);
+        return result * 2;
+    })
+    .then(function(result) {
+        console.log("After Subtraction:", result - 5);
+        return result - 5;
+    })
+    .then(function(result) {
+        console.log("Final Result:", result);
+    });
+
+
+    </script>
+</body>
+</html>
